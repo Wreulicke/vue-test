@@ -1,16 +1,16 @@
 gulp = require 'gulp'
 $ = require('gulp-load-plugins')()
-
+run = require 'run-sequence'
 gulp.task 'test', ->
   console.log('aaa')
 
-console.log $
 plumber = ->
   $.plumber(
     errorHandler: (err) ->
       console.log(err.messageFormatted)
       @emit('end')
   )
+
 vulcanize = ->
   $.vulcanize
     inlineScripts: true
@@ -23,6 +23,12 @@ gulp.task 'jade', ->
   .pipe $.jade()
   .pipe gulp.dest 'target'
 
+gulp.task 'less', ->
+  gulp.src('src/less/**/*.less',base:'src/less')
+  .pipe plumber()
+  .pipe $.less()
+  .pipe gulp.dest 'target/css'
+
 gulp.task 'webpack', ->
   gulp.src("src/*")
     .pipe plumber()
@@ -34,3 +40,11 @@ gulp.task 'vulcanize', ->
   .pipe plumber()
   .pipe vulcanize()
   .pipe gulp.dest './vulcanized/'
+
+gulp.task 'default', (cb) ->
+  run(
+    ['jade','less'],
+    'webpack',
+    'vulcanize',
+    cb
+  )

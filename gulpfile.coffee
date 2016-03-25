@@ -30,7 +30,7 @@ gulp.task 'less', ->
   .pipe gulp.dest 'target/css'
 
 gulp.task 'webpack', ->
-  gulp.src("src/*")
+  gulp.src("src/**/*")
     .pipe plumber()
     .pipe $.webpack require './webpack.config'
     .pipe gulp.dest 'target'

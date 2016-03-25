@@ -1,10 +1,9 @@
 path = require 'path'
-webpack = require("gulp-webpack").webpack
+webpack = require("webpack")
 BowerWebpackPlugin = require "bower-webpack-plugin"
 
 cwd = ->
   args = ['./'].concat(Array::slice.apply arguments)
-  console.log args
   path.join.apply(path, args)
 
 module.exports =
@@ -14,18 +13,18 @@ module.exports =
     filename: '[name].js'
   resolve:
     root: [
-      cwd('bower_components')
-      cwd('src')
+      path.resolve('./bower_components')
+      path.resolve('./src')
+      cwd('node_modules')
     ]
-    moduleDirectories: ["bower_components"]
+    moduleDirectories: ['node_modules', "bower_components"]
     extensions: [
       '', '.ts', '.webpack.js', '.web.js', '.js', '.jade'
     ]
   module:
-    loader: [
+    loaders: [
       { test: /\.ts$/, loader: 'ts-loader' }
       { test: /\.jade$/, loader: 'jade-loader' }
     ]
   plugins: [
-    new BowerWebpackPlugin()
   ]

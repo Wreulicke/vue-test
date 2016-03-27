@@ -27,4 +27,10 @@ module.exports =
       { test: /\.jade$/, loader: 'jade-loader' }
     ]
   plugins: [
+    new webpack.HotModuleReplacementPlugin()
   ]
+  devServer:
+    contentBase: "target"
+    port: 8080
+    hot: "true"
+    inline: true

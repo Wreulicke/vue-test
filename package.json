@@ -27,10 +27,12 @@
     "typings": "^0.7.9",
     "vue": "^1.0.18",
     "vue-class-component": "^3.2.0",
-    "webpack": "^1.12.14"
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.14.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server"
   },
   "author": "Wreulicke",
   "license": "ISC"

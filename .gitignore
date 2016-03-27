@@ -2,5 +2,5 @@ bower_components
 node_modules
 target
 vulcanized
-
+# npm debug log
 npm-debug.log

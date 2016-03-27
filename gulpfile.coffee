@@ -48,3 +48,7 @@ gulp.task 'default', (cb) ->
     'vulcanize',
     cb
   )
+gulp.task 'watch', ->
+  gulp.watch 'src/less/**/*.less', ['less']
+  gulp.watch "src/index.jade", ['jade']
+  gulp.watch ['src/ts/**/*','src/jade/**/*.jade'], ['webpack']

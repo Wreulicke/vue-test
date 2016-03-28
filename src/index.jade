@@ -63,33 +63,14 @@ html(lang='ja')
                 i.material-icons add
                 | Add another account...
         nav.mdl-navigation.mdl-color--blue-grey-800
-          a.mdl-navigation__link(href='')
-            i.mdl-color-text--blue-grey-400.material-icons(role='presentation') home
-            | Home
-          a.mdl-navigation__link(href='')
-            i.mdl-color-text--blue-grey-400.material-icons(role='presentation') inbox
-            | Inbox
-          a.mdl-navigation__link(href='')
-            i.mdl-color-text--blue-grey-400.material-icons(role='presentation') delete
-            | Trash
-          a.mdl-navigation__link(href='')
-            i.mdl-color-text--blue-grey-400.material-icons(role='presentation') report
-            | Spam
-          a.mdl-navigation__link(href='')
-            i.mdl-color-text--blue-grey-400.material-icons(role='presentation') forum
-            | Forums
-          a.mdl-navigation__link(href='')
-            i.mdl-color-text--blue-grey-400.material-icons(role='presentation') flag
-            | Updates
-          a.mdl-navigation__link(href='')
-            i.mdl-color-text--blue-grey-400.material-icons(role='presentation') local_offer
-            | Promos
-          a.mdl-navigation__link(href='')
-            i.mdl-color-text--blue-grey-400.material-icons(role='presentation') shopping_cart
-            | Purchases
-          a.mdl-navigation__link(href='')
-            i.mdl-color-text--blue-grey-400.material-icons(role='presentation') people
-            | Social
+          nav-link(href="#home" icon="home") Home
+          nav-link(href="" icon="inbox") Inbox
+          nav-link(href="" icon="delete") Trash
+          nav-link(href="" icon="forum") Forumns
+          nav-link(href="" icon="flag") Updates
+          nav-link(href="" icon="local_offer") Promos
+          nav-link(href="" icon="shopping_cart") Purchases
+          nav-link(href="" icon="people") Social
           .mdl-layout-spacer
           a.mdl-navigation__link(href='')
             i.mdl-color-text--blue-grey-400.material-icons(role='presentation') help_outline

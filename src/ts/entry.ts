@@ -7,13 +7,13 @@ Vue.use(VueRouter)
 @Component({
   components: {
     "def-list": require("./component/def-list/def-list").DefList,
-    "nav-link": require("./component/nav-link/nav-link").DefList
+    "nav-link": require("./component/nav-link/nav-link").NavLink
   }
 })
 export class App {
 }
 
-
+Vue.config.debug = true
 document.addEventListener("DOMContentLoaded", function(e) {
   let router = new VueRouter();
   router.start(App, "#app");

@@ -8,4 +8,6 @@ import Component from "vue-class-component";
 })
 export class Icon {
   icon: string;
+  created() {
+  }
 }

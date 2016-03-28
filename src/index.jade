@@ -1,9 +1,98 @@
 html(lang='ja')
   head
     script(src="app.js")
-  body
-    div#app
-      ul
-        li(v-for="todo in todos") {{todo.text}}
-      input(type="text" v-model="newTask" v-on:keyup.enter="add")
-  
+    link(rel="stylesheet" href="../bower_components/material-design-lite/material.min.css")
+    script(src="../bower_components/material-design-lite/material.min.js")
+    link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons")
+    style.
+      body::before {
+        background-size: cover;
+        background-attachment: fixed;
+        content: '';
+        will-change: transform;
+        z-index: -1;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        position: fixed;
+      }
+      .drop {
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          position: relative;
+          -webkit-flex-direction: row;
+          -ms-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          -ms-flex-align: center;
+          align-items: center;
+          width: 100%;
+      }
+  body#app
+    .mdl-layout.mdl-js-layout.mdl-layout--fixed-drawer.mdl-layout--fixed-header
+      header.mdl-layout__header.mdl-color--grey-100.mdl-color-text--grey-600
+        .mdl-layout__header-row
+          span.mdl-layout-title Home
+          .mdl-layout-spacer
+          .mdl-textfield.mdl-js-textfield.mdl-textfield--expandable
+            label.mdl-button.mdl-js-button.mdl-button--icon(for='search')
+              i.material-icons search
+            .mdl-textfield__expandable-holder
+              input#search.mdl-textfield__input(type='text')
+              label.mdl-textfield__label(for='search') Enter your query...
+          button#hdrbtn.mdl-button.mdl-js-button.mdl-js-ripple-effect.mdl-button--icon
+            i.material-icons more_vert
+          ul.mdl-menu.mdl-js-menu.mdl-js-ripple-effect.mdl-menu--bottom-right(for='hdrbtn')
+            li.mdl-menu__item About
+            li.mdl-menu__item Contact
+            li.mdl-menu__item Legal information
+      .mdl-layout__drawer.mdl-color--blue-grey-900.mdl-color-text--blue-grey-50
+        header
+          div.drop
+            span hello@example.com
+            .mdl-layout-spacer
+            button#accbtn.mdl-button.mdl-js-button.mdl-js-ripple-effect.mdl-button--icon
+              i.material-icons(role='presentation') arrow_drop_down
+              span.visuallyhidden Accounts
+            ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect(for='accbtn')
+              li.mdl-menu__item hello@example.com
+              li.mdl-menu__item info@example.com
+              li.mdl-menu__item
+                i.material-icons add
+                | Add another account...
+        nav.mdl-navigation.mdl-color--blue-grey-800
+          a.mdl-navigation__link(href='')
+            i.mdl-color-text--blue-grey-400.material-icons(role='presentation') home
+            | Home
+          a.mdl-navigation__link(href='')
+            i.mdl-color-text--blue-grey-400.material-icons(role='presentation') inbox
+            | Inbox
+          a.mdl-navigation__link(href='')
+            i.mdl-color-text--blue-grey-400.material-icons(role='presentation') delete
+            | Trash
+          a.mdl-navigation__link(href='')
+            i.mdl-color-text--blue-grey-400.material-icons(role='presentation') report
+            | Spam
+          a.mdl-navigation__link(href='')
+            i.mdl-color-text--blue-grey-400.material-icons(role='presentation') forum
+            | Forums
+          a.mdl-navigation__link(href='')
+            i.mdl-color-text--blue-grey-400.material-icons(role='presentation') flag
+            | Updates
+          a.mdl-navigation__link(href='')
+            i.mdl-color-text--blue-grey-400.material-icons(role='presentation') local_offer
+            | Promos
+          a.mdl-navigation__link(href='')
+            i.mdl-color-text--blue-grey-400.material-icons(role='presentation') shopping_cart
+            | Purchases
+          a.mdl-navigation__link(href='')
+            i.mdl-color-text--blue-grey-400.material-icons(role='presentation') people
+            | Social
+          .mdl-layout-spacer
+          a.mdl-navigation__link(href='')
+            i.mdl-color-text--blue-grey-400.material-icons(role='presentation') help_outline
+            span.visuallyhidden Help
+      main.mdl-layout__content.mdl-color--grey-100
+        def-list

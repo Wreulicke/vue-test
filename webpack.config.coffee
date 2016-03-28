@@ -8,16 +8,19 @@ cwd = ->
 
 module.exports =
   entry:
-    app: './src/ts/entry.ts'
+    app: [
+      "webpack-dev-server/client?http://localhost:8080", './src/ts/entry.ts']
   output:
+    path: path.resolve "./target"
+    publicPath: "/target/"
     filename: '[name].js'
   resolve:
     root: [
-      path.resolve('./bower_components')
+      path.resolve('bower_components')
       path.resolve('./src')
-      cwd('node_modules')
+      path.resolve('node_modules')
     ]
-    moduleDirectories: ['node_modules', "bower_components"]
+    moduleDirectories: ['node_modules','bower_components']
     extensions: [
       '', '.ts', '.webpack.js', '.web.js', '.js', '.jade'
     ]
@@ -30,7 +33,7 @@ module.exports =
     new webpack.HotModuleReplacementPlugin()
   ]
   devServer:
-    contentBase: "target"
+    contentBase: "."
     port: 8080
-    hot: "true"
+    hot: true
     inline: true

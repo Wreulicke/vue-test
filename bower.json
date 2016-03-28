@@ -2,14 +2,20 @@
   "name": "vue-test",
   "description": "test",
   "main": "index.js",
-  "authors": ["Wreulicke <masaya2dies@gmail.com>"],
+  "authors": [
+    "Wreulicke <masaya2dies@gmail.com>"
+  ],
   "license": "ISC",
   "moduleType": [],
   "homepage": "",
   "ignore": [
-    "**/.*", "node_modules", "bower_components", "test", "tests"
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
   ],
   "dependencies": {
-    "vue": "~1.0.18"
+    "material-design-lite": "^1.1.3"
   }
 }

@@ -1,6 +1,9 @@
 gulp = require 'gulp'
 $ = require('gulp-load-plugins')()
 run = require 'run-sequence'
+packConfig = require './webpack.config.coffee'
+webpack = require 'webpack'
+WebpackDevServer = require 'webpack-dev-server'
 gulp.task 'test', ->
   console.log('aaa')
 
@@ -32,8 +35,20 @@ gulp.task 'less', ->
 gulp.task 'webpack', ->
   gulp.src("src/**/*")
     .pipe plumber()
-    .pipe $.webpack require './webpack.config'
+    .pipe $.webpack packConfig
     .pipe gulp.dest 'target'
+
+gulp.task 'web', ['watch'], ->
+  packConfig.devtool = 'eval';
+  packConfig.debug = true;
+  new WebpackDevServer(webpack(packConfig),
+    publicPath: packConfig.output.publicPath
+    stats: {
+      colors: true
+    }
+  ).listen(8080, 'localhost', (err) ->
+    gulp.src('./target/index.html').pipe($.open(uri: 'http://localhost:8080/webpack-dev-server/target'))
+  )
 
 gulp.task 'vulcanize', ->
   gulp.src('target/index.html')
@@ -52,4 +67,4 @@ gulp.task 'default', (cb) ->
 gulp.task 'watch', ->
   gulp.watch 'src/less/**/*.less', ['less']
   gulp.watch "src/index.jade", ['jade']
-  gulp.watch ['src/ts/**/*','src/jade/**/*.jade'], ['webpack']
+  #gulp.watch ['src/ts/**/*','src/jade/**/*.jade'], ['webpack']
